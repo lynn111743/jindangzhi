@@ -830,7 +830,7 @@
         </div>
         <div class="hero-badge">
           <span>云端收录</span>
-          <strong>1983+ 讲</strong>
+          <strong>1998+ 讲</strong>
         </div>
       </div>
 
@@ -22356,7 +22356,7 @@
               </div>
               <div style="display:flex; align-items:center; gap:8px;">
                 <button class="btn-del-album admin-only" onclick="deleteAlbumCard(this, event)">🗑️ 删除专栏</button>
-                <div class="album-count">共 12 讲 ▾</div>
+                <div class="album-count">共 27 讲 ▾</div>
               </div>
             </div>
             
@@ -22368,8 +22368,64 @@
             <div class="tracks-container">
               
                 <div class="track-row-box">
-                  <div class="track-row" data-title="一梦漫言01.mp3">
+                  <div class="track-row" data-title="寶華山見月律師年譜摭要.mp3">
                     <span class="track-num">01</span>
+                    <span class="track-name">寶華山見月律師年譜摭要.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E5%AF%B6%E8%8F%AF%E5%B1%B1%E8%A6%8B%E6%9C%88%E5%BE%8B%E5%B8%AB%E5%B9%B4%E8%AD%9C%E6%91%AD%E8%A6%81.mp3', '寶華山見月律師年譜摭要.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E5%AF%B6%E8%8F%AF%E5%B1%B1%E8%A6%8B%E6%9C%88%E5%BE%8B%E5%B8%AB%E5%B9%B4%E8%AD%9C%E6%91%AD%E8%A6%81.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="古心律祖三昧律師略傳.mp3">
+                    <span class="track-num">02</span>
+                    <span class="track-name">古心律祖三昧律師略傳.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E5%8F%A4%E5%BF%83%E5%BE%8B%E7%A5%96%E4%B8%89%E6%98%A7%E5%BE%8B%E5%B8%AB%E7%95%A5%E5%82%B3.mp3', '古心律祖三昧律師略傳.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E5%8F%A4%E5%BF%83%E5%BE%8B%E7%A5%96%E4%B8%89%E6%98%A7%E5%BE%8B%E5%B8%AB%E7%95%A5%E5%82%B3.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言01.mp3">
+                    <span class="track-num">03</span>
                     <span class="track-name">一梦漫言01.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8001.mp3', '一梦漫言01.mp3', '一梦漫言（全）', this)">▶ 播放</button>
@@ -22397,7 +22453,7 @@
               
                 <div class="track-row-box">
                   <div class="track-row" data-title="一梦漫言02.mp3">
-                    <span class="track-num">02</span>
+                    <span class="track-num">04</span>
                     <span class="track-name">一梦漫言02.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8002.mp3', '一梦漫言02.mp3', '一梦漫言（全）', this)">▶ 播放</button>
@@ -22425,7 +22481,7 @@
               
                 <div class="track-row-box">
                   <div class="track-row" data-title="一梦漫言03.mp3">
-                    <span class="track-num">03</span>
+                    <span class="track-num">05</span>
                     <span class="track-name">一梦漫言03.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8003.mp3', '一梦漫言03.mp3', '一梦漫言（全）', this)">▶ 播放</button>
@@ -22453,7 +22509,7 @@
               
                 <div class="track-row-box">
                   <div class="track-row" data-title="一梦漫言04.mp3">
-                    <span class="track-num">04</span>
+                    <span class="track-num">06</span>
                     <span class="track-name">一梦漫言04.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8004.mp3', '一梦漫言04.mp3', '一梦漫言（全）', this)">▶ 播放</button>
@@ -22481,7 +22537,7 @@
               
                 <div class="track-row-box">
                   <div class="track-row" data-title="一梦漫言05.mp3">
-                    <span class="track-num">05</span>
+                    <span class="track-num">07</span>
                     <span class="track-name">一梦漫言05.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8005.mp3', '一梦漫言05.mp3', '一梦漫言（全）', this)">▶ 播放</button>
@@ -22509,7 +22565,7 @@
               
                 <div class="track-row-box">
                   <div class="track-row" data-title="一梦漫言06.mp3">
-                    <span class="track-num">06</span>
+                    <span class="track-num">08</span>
                     <span class="track-name">一梦漫言06.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8006.mp3', '一梦漫言06.mp3', '一梦漫言（全）', this)">▶ 播放</button>
@@ -22537,7 +22593,7 @@
               
                 <div class="track-row-box">
                   <div class="track-row" data-title="一梦漫言07.mp3">
-                    <span class="track-num">07</span>
+                    <span class="track-num">09</span>
                     <span class="track-name">一梦漫言07.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8007.mp3', '一梦漫言07.mp3', '一梦漫言（全）', this)">▶ 播放</button>
@@ -22565,7 +22621,7 @@
               
                 <div class="track-row-box">
                   <div class="track-row" data-title="一梦漫言08.mp3">
-                    <span class="track-num">08</span>
+                    <span class="track-num">10</span>
                     <span class="track-name">一梦漫言08.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8008.mp3', '一梦漫言08.mp3', '一梦漫言（全）', this)">▶ 播放</button>
@@ -22593,7 +22649,7 @@
               
                 <div class="track-row-box">
                   <div class="track-row" data-title="一梦漫言09.mp3">
-                    <span class="track-num">09</span>
+                    <span class="track-num">11</span>
                     <span class="track-name">一梦漫言09.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8009.mp3', '一梦漫言09.mp3', '一梦漫言（全）', this)">▶ 播放</button>
@@ -22621,7 +22677,7 @@
               
                 <div class="track-row-box">
                   <div class="track-row" data-title="一梦漫言10.mp3">
-                    <span class="track-num">10</span>
+                    <span class="track-num">12</span>
                     <span class="track-name">一梦漫言10.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8010.mp3', '一梦漫言10.mp3', '一梦漫言（全）', this)">▶ 播放</button>
@@ -22649,7 +22705,7 @@
               
                 <div class="track-row-box">
                   <div class="track-row" data-title="一梦漫言11.mp3">
-                    <span class="track-num">11</span>
+                    <span class="track-num">13</span>
                     <span class="track-name">一梦漫言11.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8011.mp3', '一梦漫言11.mp3', '一梦漫言（全）', this)">▶ 播放</button>
@@ -22677,13 +22733,377 @@
               
                 <div class="track-row-box">
                   <div class="track-row" data-title="一梦漫言12.mp3">
-                    <span class="track-num">12</span>
+                    <span class="track-num">14</span>
                     <span class="track-name">一梦漫言12.mp3</span>
                     <div class="track-acts">
                       <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8012.mp3', '一梦漫言12.mp3', '一梦漫言（全）', this)">▶ 播放</button>
                       <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
                       <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
                       <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8012.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言13.mp3">
+                    <span class="track-num">15</span>
+                    <span class="track-name">一梦漫言13.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8013.mp3', '一梦漫言13.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8013.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言14.mp3">
+                    <span class="track-num">16</span>
+                    <span class="track-name">一梦漫言14.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8014.mp3', '一梦漫言14.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8014.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言15.mp3">
+                    <span class="track-num">17</span>
+                    <span class="track-name">一梦漫言15.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8015.mp3', '一梦漫言15.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8015.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言16.mp3">
+                    <span class="track-num">18</span>
+                    <span class="track-name">一梦漫言16.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8016.mp3', '一梦漫言16.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8016.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言17.mp3">
+                    <span class="track-num">19</span>
+                    <span class="track-name">一梦漫言17.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8017.mp3', '一梦漫言17.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8017.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言18.mp3">
+                    <span class="track-num">20</span>
+                    <span class="track-name">一梦漫言18.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8018.mp3', '一梦漫言18.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8018.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言19.mp3">
+                    <span class="track-num">21</span>
+                    <span class="track-name">一梦漫言19.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8019.mp3', '一梦漫言19.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8019.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言20.mp3">
+                    <span class="track-num">22</span>
+                    <span class="track-name">一梦漫言20.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8020.mp3', '一梦漫言20.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8020.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言21.mp3">
+                    <span class="track-num">23</span>
+                    <span class="track-name">一梦漫言21.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8021.mp3', '一梦漫言21.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8021.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言22.mp3">
+                    <span class="track-num">24</span>
+                    <span class="track-name">一梦漫言22.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8022.mp3', '一梦漫言22.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8022.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言23.mp3">
+                    <span class="track-num">25</span>
+                    <span class="track-name">一梦漫言23.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8023.mp3', '一梦漫言23.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8023.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言24.mp3">
+                    <span class="track-num">26</span>
+                    <span class="track-name">一梦漫言24.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8024.mp3', '一梦漫言24.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8024.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
+                    </div>
+                  </div>
+                  <div class="lecture-text-box"></div>
+                  <div class="lecture-edit-panel admin-only-block" style="display:none;">
+                    <div class="panel-toolbar">
+                      <span style="font-weight:bold; font-size:12.5px; color:var(--vinaya-indigo);">✏️ 本讲配套文字讲义与插图编辑</span>
+                      <div style="display:flex; gap:6px;">
+                        <label class="btn-tool" style="cursor:pointer;" title="插入电脑中的本地插图">
+                          <input type="file" accept="image/*" style="display:none;" onchange="insertTrackImage(event, this)">
+                          🖼️ 插入插图
+                        </label>
+                        <button class="btn-tool btn-save" onclick="saveTrackLecture(this)">💾 保存配文</button>
+                        <button class="btn-tool" onclick="closeTrackEditor(this)">✕ 取消</button>
+                      </div>
+                    </div>
+                    <textarea class="track-edit-textarea" placeholder="在此输入本讲对应的讲义正文、科判经文或开示要点，亦可点击上方【🖼️ 插入插图】嵌入法相..."></textarea>
+                  </div>
+                </div>
+              
+                <div class="track-row-box">
+                  <div class="track-row" data-title="一梦漫言25.mp3">
+                    <span class="track-num">27</span>
+                    <span class="track-name">一梦漫言25.mp3</span>
+                    <div class="track-acts">
+                      <button class="btn-action btn-play" onclick="playAudio('https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8025.mp3', '一梦漫言25.mp3', '一梦漫言（全）', this)">▶ 播放</button>
+                      <button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>
+                      <button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>
+                      <a href="https://archive.org/download/jindangzhi_yimengmanyan_yuanban_2026/%E4%B8%80%E6%A2%A6%E6%BC%AB%E8%A8%8025.mp3" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>
                     </div>
                   </div>
                   <div class="lecture-text-box"></div>
