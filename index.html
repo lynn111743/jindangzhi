@@ -6,9 +6,9 @@
   <title>今当知 ｜ 二部律师 ｜ 南山律学</title>
   <style>
     :root {
-      --bg: #f7f5f0;
+      --bg: #f8f6f0;
       --card: #ffffff;
-      --primary: #8a251e;
+      --primary: #8b261e;
       --primary-hover: #a52f26;
       --gold: #b3882a;
       --gold-light: #f6eedb;
@@ -17,6 +17,29 @@
       --text-muted: #6f675e;
       --paper: #fdfcf9;
     }
+    /* 主题动态切换支持 */
+    body.theme-tan {
+      --bg: #f4eee1;
+      --primary: #5c3a21;
+      --primary-hover: #73492a;
+      --gold: #8c6838;
+      --border: #dfd2be;
+    }
+    body.theme-zen {
+      --bg: #f2f4f2;
+      --primary: #34493e;
+      --primary-hover: #435e50;
+      --gold: #708573;
+      --border: #d5ded6;
+    }
+    body.theme-ink {
+      --bg: #eceae6;
+      --primary: #212529;
+      --primary-hover: #343a40;
+      --gold: #5a6268;
+      --border: #cfccc4;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -24,9 +47,12 @@
       color: var(--text);
       line-height: 1.6;
       padding-bottom: 120px;
+      transition: background 0.3s ease;
     }
+
+    /* 顶栏 */
     header {
-      background: #1b1715;
+      background: #1a1614;
       color: #ede5d8;
       border-bottom: 2px solid var(--gold);
       position: sticky;
@@ -41,7 +67,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 12px;
     }
     .brand-box {
@@ -52,8 +77,8 @@
     .seal-logo {
       background: var(--primary);
       color: #fff;
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -65,6 +90,7 @@
       letter-spacing: 2px;
       font-family: "STKaiti", "KaiTi", serif;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      user-select: none;
     }
     .brand-title {
       font-size: 24px;
@@ -78,40 +104,10 @@
       color: #cbb382;
       letter-spacing: 1px;
     }
-    .head-right-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .mirror-select {
-      background: #2b2520;
-      border: 1px solid var(--gold);
-      color: #edd49a;
-      padding: 5px 10px;
-      border-radius: 4px;
-      font-size: 12px;
-      outline: none;
-      cursor: pointer;
-    }
-    .admin-badge {
-      background: #b3882a;
-      color: #1a1614;
-      font-size: 12px;
-      font-weight: bold;
-      padding: 5px 12px;
-      border-radius: 4px;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .admin-badge:hover { background: #cf9f33; }
 
     /* 导航栏 */
     nav {
-      background: #25201c;
+      background: #241f1c;
       border-bottom: 1px solid #3d352e;
     }
     .nav-inner {
@@ -138,31 +134,28 @@
       background: rgba(255,255,255,0.03);
     }
 
-    /* 主体容器 */
     .container {
       max-width: 1200px;
       margin: 24px auto;
       padding: 0 20px;
     }
 
-    /* 搜索 */
+    /* 检索 */
     .search-row {
       margin-bottom: 24px;
-      display: flex;
-      gap: 12px;
     }
     .search-input {
-      flex: 1;
+      width: 100%;
       padding: 12px 18px;
       border: 1px solid var(--border);
       border-radius: 6px;
-      font-size: 14px;
+      font-size: 14.5px;
       background: #fff;
       outline: none;
       box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
 
-    /* 宗门大典卡片 */
+    /* 大典卡片 */
     .album-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -170,6 +163,7 @@
       margin-bottom: 24px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.03);
       overflow: hidden;
+      transition: all 0.2s;
     }
     .album-header {
       background: #fbf9f5;
@@ -229,13 +223,20 @@
     }
     .pdf-link:hover { background: #8a641e; color: #fff; }
 
-    /* 音文合一音轨列表 */
+    /* 音文合一音轨卡片 */
     .tracks-container {
       padding: 14px 20px;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
+    /* 宫格布局选项支持 */
+    body.layout-grid .tracks-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 14px;
+    }
+
     .track-card {
       background: #faf8f5;
       border: 1px solid #ede5d8;
@@ -263,7 +264,7 @@
       align-items: center;
       gap: 10px;
       flex: 1;
-      min-width: 260px;
+      min-width: 240px;
     }
     .track-name {
       font-size: 14.5px;
@@ -308,7 +309,7 @@
     }
     .btn-dl:hover { background: #efebe4; }
 
-    /* 附录讲义宣纸长文展开区（音文合一） */
+    /* 讲义长文展开（音文合一） */
     .lecture-text-box {
       margin-top: 12px;
       padding: 14px 18px;
@@ -316,7 +317,7 @@
       border: 1px solid #ebdcc5;
       border-radius: 4px;
       font-size: 14px;
-      line-height: 1.8;
+      line-height: 1.85;
       color: #3e3831;
       display: none;
       white-space: pre-wrap;
@@ -325,7 +326,7 @@
     }
     .lecture-text-box.open { display: block; }
 
-    /* 学戒问答折叠卡片 */
+    /* 学戒问答折叠 */
     .qa-box {
       background: #fff;
       border: 1px solid var(--border);
@@ -355,13 +356,13 @@
     }
     .qa-box.open .qa-body { display: block; }
 
-    /* 底部悬浮全局播放器 */
+    /* 悬浮底栏播放器 */
     .player-dock {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(27, 23, 21, 0.98);
+      background: rgba(26, 22, 20, 0.98);
       backdrop-filter: blur(8px);
       border-top: 2px solid var(--gold);
       color: #fff;
@@ -380,7 +381,7 @@
     }
     .p-track-info {
       flex: 1;
-      min-width: 220px;
+      min-width: 200px;
     }
     .p-now-title {
       font-size: 15px;
@@ -453,7 +454,6 @@
       cursor: pointer;
     }
 
-    /* 管理模式浮动面板（仅母版可见） */
     
 
     @media (max-width: 768px) {
@@ -477,13 +477,9 @@
           <div class="brand-sub">二部律师 ｜ 南山律学 ｜ 正法久住</div>
         </div>
       </div>
-      <div class="head-right-actions">
-        <label style="font-size:12px; color:#c5b08e;">智能线路:</label>
-        <select class="mirror-select" id="mirrorSelect" onchange="changeMirror(this.value)">
-          <option value="0">线路一（境内极速 CDN）</option><option value="1">线路二（亚太 Anycast 节点）</option><option value="2">线路三（海外国际主站）</option><option value="3">线路四（北美中转镜像）</option><option value="4">线路五（欧洲边缘镜像）</option><option value="5">线路六（高可用智能容灾）</option><option value="6">线路七（源站直通专用）</option>
-        </select>
+      <div>
         
-          <span style="font-size:12px; color:#c5b08e; border:1px solid #5a4b3d; padding:4px 8px; border-radius:4px;">✦ 结缘流通版</span>
+          <!-- 子版信众端：完全无任何管理与线路选择痕迹，纯正庄严 -->
         
       </div>
     </div>
@@ -509,7 +505,7 @@
       <input type="text" id="searchInput" class="search-input" placeholder="🔍 检索讲记、开示讲义全文、经名或问答..." oninput="handleSearch(this.value)">
     </div>
 
-    <!-- 问答专区（独立视图） -->
+    <!-- 问答专区 -->
     <section id="qaSection" style="display:none;">
       <h3 style="font-family:'STKaiti', serif; font-size:20px; margin-bottom:16px;">二部律师 • 居士学戒问答集</h3>
       <div id="qaContainer">
@@ -960,7 +956,7 @@
     <!-- 专辑列表区 -->
     <section id="albumsSection">
       
-        <div class="album-card" data-cat="律藏大典" data-title="行事钞资持记">
+        <div class="album-card" id="albumCard_0" data-cat="律藏大典" data-title="行事钞资持记">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">律藏大典</span>
@@ -2579,7 +2575,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="律藏大典" data-title="羯磨疏济缘记">
+        <div class="album-card" id="albumCard_1" data-cat="律藏大典" data-title="羯磨疏济缘记">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">律藏大典</span>
@@ -3553,7 +3549,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="律藏大典" data-title="随机羯磨（全）">
+        <div class="album-card" id="albumCard_2" data-cat="律藏大典" data-title="随机羯磨（全）">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">律藏大典</span>
@@ -3897,7 +3893,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="律藏大典" data-title="行事钞资持记 受戒缘集篇第八（小众可听剪辑版）">
+        <div class="album-card" id="albumCard_3" data-cat="律藏大典" data-title="行事钞资持记 受戒缘集篇第八（小众可听剪辑版）">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">律藏大典</span>
@@ -4261,7 +4257,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="律藏大典" data-title="大正律藏">
+        <div class="album-card" id="albumCard_4" data-cat="律藏大典" data-title="大正律藏">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">律藏大典</span>
@@ -5885,7 +5881,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="律藏大典" data-title="比丘尼戒（全）">
+        <div class="album-card" id="albumCard_5" data-cat="律藏大典" data-title="比丘尼戒（全）">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">律藏大典</span>
@@ -7449,7 +7445,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="经部讲录" data-title="佛说优婆塞五戒相经（全）">
+        <div class="album-card" id="albumCard_6" data-cat="经部讲录" data-title="佛说优婆塞五戒相经（全）">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">经部讲录</span>
@@ -7543,7 +7539,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="经部讲录" data-title="佛说因缘僧护经（全）">
+        <div class="album-card" id="albumCard_7" data-cat="经部讲录" data-title="佛说因缘僧护经（全）">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">经部讲录</span>
@@ -7652,7 +7648,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="经部讲录" data-title="佛说杂藏经（全）">
+        <div class="album-card" id="albumCard_8" data-cat="经部讲录" data-title="佛说杂藏经（全）">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">经部讲录</span>
@@ -7716,7 +7712,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="经部讲录" data-title="卢至长者因缘经（全）">
+        <div class="album-card" id="albumCard_9" data-cat="经部讲录" data-title="卢至长者因缘经（全）">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">经部讲录</span>
@@ -7765,7 +7761,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="经部讲录" data-title="饿鬼报应经（全）">
+        <div class="album-card" id="albumCard_10" data-cat="经部讲录" data-title="饿鬼报应经（全）">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">经部讲录</span>
@@ -7829,7 +7825,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="修持导读" data-title="三归、五戒、八戒">
+        <div class="album-card" id="albumCard_11" data-cat="修持导读" data-title="三归、五戒、八戒">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">修持导读</span>
@@ -7918,7 +7914,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="修持导读" data-title="学佛行仪（全）">
+        <div class="album-card" id="albumCard_12" data-cat="修持导读" data-title="学佛行仪（全）">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">修持导读</span>
@@ -8097,7 +8093,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="修持导读" data-title="五分律精华导读">
+        <div class="album-card" id="albumCard_13" data-cat="修持导读" data-title="五分律精华导读">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">修持导读</span>
@@ -8426,7 +8422,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="修持导读" data-title="僧祇律精华导读">
+        <div class="album-card" id="albumCard_14" data-cat="修持导读" data-title="僧祇律精华导读">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">修持导读</span>
@@ -8526,7 +8522,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="修持导读" data-title="式叉尼沙弥尼法">
+        <div class="album-card" id="albumCard_15" data-cat="修持导读" data-title="式叉尼沙弥尼法">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">修持导读</span>
@@ -8575,7 +8571,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="修持导读" data-title="污家之患">
+        <div class="album-card" id="albumCard_16" data-cat="修持导读" data-title="污家之患">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">修持导读</span>
@@ -8826,7 +8822,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="修持导读" data-title="请宾头卢法（全）">
+        <div class="album-card" id="albumCard_17" data-cat="修持导读" data-title="请宾头卢法（全）">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">修持导读</span>
@@ -8870,7 +8866,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="修持导读" data-title="缁门崇行录">
+        <div class="album-card" id="albumCard_18" data-cat="修持导读" data-title="缁门崇行录">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">修持导读</span>
@@ -8904,7 +8900,7 @@
           </div>
         </div>
       
-        <div class="album-card" data-cat="专题开示" data-title="专题开示">
+        <div class="album-card" id="albumCard_19" data-cat="专题开示" data-title="专题开示">
           <div class="album-header">
             <div class="album-title-box">
               <span class="album-tag">专题开示</span>
@@ -14806,7 +14802,7 @@
     </section>
   </main>
 
-  <!-- 底部悬浮播放器 -->
+  <!-- 底部悬浮播放器（完全隐藏线路痕迹） -->
   <div class="player-dock" id="playerDock" style="display:none;">
     <div class="player-inner">
       <div class="p-track-info">
@@ -14834,13 +14830,14 @@
 
   <script>
     const audioEl = document.getElementById('globalAudio');
-    let currentMirrorIdx = 0;
-    const mirrors = [{"name":"线路一（境内极速 CDN）","prefix":"https://archive.org/download/"},{"name":"线路二（亚太 Anycast 节点）","prefix":"https://archive.org/download/"},{"name":"线路三（海外国际主站）","prefix":"https://archive.org/download/"},{"name":"线路四（北美中转镜像）","prefix":"https://archive.org/download/"},{"name":"线路五（欧洲边缘镜像）","prefix":"https://archive.org/download/"},{"name":"线路六（高可用智能容灾）","prefix":"https://archive.org/download/"},{"name":"线路七（源站直通专用）","prefix":"https://archive.org/download/"}];
+    // 静默备用线路列表（对信众完全隐形）
+    const silentMirrors = ["https://archive.org/download/","https://ia800100.us.archive.org/download/","https://ia600100.us.archive.org/download/","https://ia801503.us.archive.org/download/","https://ia903102.us.archive.org/download/"];
+    let silentMirrorIdx = 0;
     let activeTrackCard = null;
     let currentSpeed = 1.0;
     const speedList = [1.0, 1.25, 1.5, 2.0];
 
-    // 播放指定曲目并自动适配镜像
+    // 静默轮换播放（毫无痕迹）
     function playTrack(rawUrl, title, album, btn) {
       document.getElementById('playerDock').style.display = 'block';
       document.getElementById('pTitle').innerText = title;
@@ -14853,34 +14850,30 @@
         if (activeTrackCard) activeTrackCard.classList.add('active-playing');
       }
 
-      // 获取当前镜像直链
-      const mirrorPrefix = mirrors[currentMirrorIdx].prefix;
-      const parsedPath = rawUrl.replace('https://archive.org/download/', '');
-      const finalUrl = mirrorPrefix + parsedPath;
+      // 静默拼接当前通道
+      const parsedPath = rawUrl.replace(/https?://[^/]+/download//, '');
+      const finalUrl = silentMirrors[silentMirrorIdx] + parsedPath;
 
       audioEl.src = finalUrl;
       audioEl.playbackRate = currentSpeed;
       audioEl.play().catch(e => {
-        console.warn('播放失败，自动尝试下一镜像节点...', e);
-        tryNextMirror(parsedPath);
+        trySilentFailover(parsedPath);
       });
       document.getElementById('pPlayBtn').innerText = '❚❚';
     }
 
-    // 容灾机制：节点不通时自动轮询切换下一镜像
-    function tryNextMirror(parsedPath) {
-      currentMirrorIdx = (currentMirrorIdx + 1) % mirrors.length;
-      document.getElementById('mirrorSelect').value = currentMirrorIdx;
-      const nextUrl = mirrors[currentMirrorIdx].prefix + parsedPath;
+    // 后台静默故障转移：信众完全不知道背后在切线路
+    function trySilentFailover(parsedPath) {
+      silentMirrorIdx = (silentMirrorIdx + 1) % silentMirrors.length;
+      const nextUrl = silentMirrors[silentMirrorIdx] + parsedPath;
       audioEl.src = nextUrl;
-      audioEl.play();
+      audioEl.play().catch(() => {});
     }
 
     audioEl.onerror = () => {
-      console.warn('当前镜像出现加载错误，正在无缝切换容灾镜像...');
       const curSrc = audioEl.src;
       const pathPart = curSrc.replace(/https?://[^/]+/download//, '');
-      tryNextMirror(pathPart);
+      trySilentFailover(pathPart);
     };
 
     function togglePlay() {
@@ -14929,17 +14922,6 @@
         document.getElementById('pDurTime').innerText = formatTime(audioEl.duration);
       }
     };
-
-    function changeMirror(idx) {
-      currentMirrorIdx = parseInt(idx, 10);
-      if (audioEl.src) {
-        const pathPart = audioEl.src.replace(/https?://[^/]+/download//, '');
-        const resumeTime = audioEl.currentTime;
-        audioEl.src = mirrors[currentMirrorIdx].prefix + pathPart;
-        audioEl.currentTime = resumeTime;
-        audioEl.play();
-      }
-    }
 
     function toggleLectureText(btn) {
       const box = btn.closest('.track-card').querySelector('.lecture-text-box');
