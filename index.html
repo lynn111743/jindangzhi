@@ -60450,8 +60450,6 @@
     }
 
     let currentAudioPath = '';
-    let activeTrackRow = null;
-    let mirrorIdx = 0;
 
     function playAudio(rawUrl, title, album, btn) {
       document.getElementById('playerDock').style.display = 'block';
@@ -60511,8 +60509,7 @@
         loadAudioWithMirror();
       } else {
         updatePlayUI(false);
-        alert('【海外云端正在调度音轨】
-如网络偶有延迟，请稍候 3 秒后再次点击播放；亦可直接点击每讲右侧【⬇】直接下载本地聆听。');
+        alert('【海外云端正在调度音轨】\n如网络偶有延迟，请稍候 3 秒后再次点击播放；亦可直接点击每讲右侧【⬇】直接下载本地聆听。');
       }
     }
 
@@ -60779,7 +60776,7 @@
                 '<button class="btn-action btn-text-toggle" style="display:none;" onclick="toggleText(this)">📜 讲义</button>' +
                 '<button class="btn-action btn-edit-lecture admin-only" onclick="openTrackEditor(this)">✏️ 配讲义</button>' +
                 '<a href="' + audioUrl + '" download class="btn-action btn-dl" onclick="event.stopPropagation()">⬇</a>' +
-              </div>' +
+              '</div>' +
             '</div>' +
             '<div class="lecture-text-box"></div>' +
             '<div class="lecture-edit-panel admin-only-block" style="display:none;">' +
