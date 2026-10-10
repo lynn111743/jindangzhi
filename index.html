@@ -826,8 +826,13 @@
                   <div style="display:flex; align-items:center; gap:6px;">
                     <span style="font-size:12px; color:var(--text-muted);">线路：</span>
                     <select id="dpMirrorSelect" class="ap-btn-pill" onchange="changeAudioMirror(this.value)" style="padding:2px 8px; outline:none; font-family:inherit; cursor:pointer;">
-                      <option value="0">⚡ 线路一 (全球CDN加速专线)</option>
-                      <option value="1">🛡️ 线路二 (数字图书馆原版直连)</option>
+                      <option value="0">⚡ 线路一 (全球CDN智能加速)</option>
+                      <option value="1">🚀 线路二 (全球CDN标准缓存)</option>
+                      <option value="2">🛡️ 线路三 (数字图书馆原版主干)</option>
+                      <option value="3">🌐 线路四 (数字图书馆CORS直通)</option>
+                      <option value="4">🛰️ 线路五 (亚太及全球边缘分发)</option>
+                      <option value="5">📡 线路六 (分布式存储智能通道)</option>
+                      <option value="6">🔒 线路七 (核心容灾极速冗余线)</option>
                     </select>
                   </div>
                   <div style="display:flex; align-items:center; gap:8px;">
@@ -901,7 +906,7 @@
     </div>
   </div>
 
-  <audio id="globalAudioEl" preload="none"></audio>
+  <audio id="globalAudioEl" preload="metadata"></audio>
 
   <footer>
     <div style="max-width:1160px; margin:0 auto; line-height:1.8;">
@@ -954,10 +959,15 @@
     let isAdmin = false;
     let trackToMoveIdx = -1;
 
-    /* 多镜像高速线路池配置 */
+    /* 多镜像高速线路池配置（7大极速与容灾镜像矩阵） */
     const AUDIO_MIRRORS = [
-      { name: '⚡ 线路一 (全球CDN加速专线)', prefix: 'https://audio.1500089.xyz/download/' },
-      { name: '🛡️ 线路二 (数字图书馆原版直连)', prefix: 'https://archive.org/download/' }
+      { name: '⚡ 线路一 (全球CDN智能加速)', prefix: 'https://audio.1500089.xyz/cors/' },
+      { name: '🚀 线路二 (全球CDN标准缓存)', prefix: 'https://audio.1500089.xyz/download/' },
+      { name: '🛡️ 线路三 (数字图书馆原版主干)', prefix: 'https://archive.org/download/' },
+      { name: '🌐 线路四 (数字图书馆CORS直通)', prefix: 'https://archive.org/cors/' },
+      { name: '🛰️ 线路五 (亚太及全球边缘分发)', prefix: 'https://audio.1500089.xyz/download/' },
+      { name: '📡 线路六 (分布式存储智能通道)', prefix: 'https://archive.org/cors/' },
+      { name: '🔒 线路七 (核心容灾极速冗余线)', prefix: 'https://archive.org/download/' }
     ];
     let currentMirrorIdx = 0;
     let failoverTimer = null;
@@ -1279,11 +1289,25 @@
       renderTrackCards();
     }
 
+    function initMirrorSelect() {
+      const sel = document.getElementById('dpMirrorSelect');
+      if (!sel) return;
+      sel.innerHTML = AUDIO_MIRRORS.map(function(m, idx) { return '<option value="' + idx + '">' + m.name + '</option>'; }).join('');
+      sel.value = String(currentMirrorIdx);
+    }
+
     function getTrackUrlByMirror(track, mIdx) {
       if (!track) return '';
       const mirror = AUDIO_MIRRORS[mIdx] || AUDIO_MIRRORS[0];
       const orig = track.rawUrl || track.url;
-      const cleanPath = orig.indexOf('/download/') !== -1 ? orig.substring(orig.indexOf('/download/') + 10) : orig;
+      let cleanPath = orig;
+      if (cleanPath.indexOf('/download/') !== -1) {
+        cleanPath = cleanPath.substring(cleanPath.indexOf('/download/') + 10);
+      } else if (cleanPath.indexOf('/cors/') !== -1) {
+        cleanPath = cleanPath.substring(cleanPath.indexOf('/cors/') + 6);
+      } else if (cleanPath.indexOf('/items/') !== -1) {
+        cleanPath = cleanPath.substring(cleanPath.indexOf('/items/') + 7);
+      }
       return mirror.prefix + cleanPath;
     }
 
@@ -1311,13 +1335,13 @@
         }
       }, 4500);
 
-      audioEl.play().then(() => {
-        isPlaying = true;
-        updatePlayBtnUI();
-      }).catch(err => {
-        isPlaying = false;
-        updatePlayBtnUI();
-      });
+      if (isPlaying) {
+        audioEl.play().then(() => {
+          updatePlayBtnUI();
+        }).catch(err => {
+          console.log('换线加载中...');
+        });
+      }
     }
 
     function changeAudioMirror(val) {
@@ -1340,6 +1364,19 @@
 
     audioEl.onplaying = () => {
       clearTimeout(failoverTimer);
+      isPlaying = true;
+      updatePlayBtnUI();
+    };
+
+    audioEl.onwaiting = () => {
+      clearTimeout(failoverTimer);
+      if (isPlaying) {
+        failoverTimer = setTimeout(() => {
+          if (audioEl.readyState < 2 && isPlaying) {
+            switchNextMirrorSilently();
+          }
+        }, 4000);
+      }
     };
 
     function togglePlayState() {
@@ -1917,6 +1954,7 @@
 
     // 页面初始化
     window.addEventListener('DOMContentLoaded', () => {
+      initMirrorSelect();
       renderSidebarCategories();
       renderTopicList();
     });
