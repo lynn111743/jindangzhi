@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>今当知 ｜ 二部律师法宝音声流通网</title>
+  <title>${workbenchTitle}</title>
   <style>
     :root {
       --scroll-wood: #5a381e;
@@ -709,7 +709,7 @@
     }
   </style>
 </head>
-<body>
+<body ${bodyClass}>
 
   <!-- 顶部水墨意境横幅 -->
   <header class="header-banner">
@@ -722,9 +722,7 @@
         <div class="brand-sub">二部律师宣讲 ｜ 南山律宗正统科判法宝流通阁</div>
       </div>
       <div>
-        <button class="admin-key-btn" onclick="toggleAdminMode()" id="adminTriggerBtn">
-          <span>⚙️ 站长管理模式</span>
-        </button>
+        ${headerRightHtml}
       </div>
     </div>
   </header>
@@ -739,20 +737,7 @@
     </div>
   </nav>
 
-  <!-- 站长后台管理控制条 (输入密码解锁) -->
-  <div class="admin-bar" id="adminBar">
-    <div style="display:flex; align-items:center; gap:8px;">
-      <span style="font-weight:bold; color:#f1c40f;">🛠️ 站长模式：</span>
-      <button class="btn-adm-mini" style="background:#27ae60; color:#fff;" onclick="promptAddCategory()">➕ 新增分类科目</button>
-      <button class="btn-adm-mini" style="background:#2980b9; color:#fff;" onclick="promptAddNewAlbum()">➕ 新增大典专栏</button>
-      <button class="btn-adm-mini" style="background:#8e44ad; color:#fff;" onclick="toggleDirectTextEdit()">✏️ 随意改字模式</button>
-    </div>
-    <div style="display:flex; gap:8px;">
-      <button class="btn-adm-mini" style="background:#16a085; color:#fff;" onclick="backupLocalData()">💾 备份数据</button>
-      <button class="btn-adm-mini" style="background:#e67e22; color:#fff; font-weight:bold;" onclick="pushLiveChanges()">🚀 立即全网发布 (1500089.xyz)</button>
-      <button class="btn-adm-mini" style="background:#c0392b; color:#fff;" onclick="lockAdmin()">退出</button>
-    </div>
-  </div>
+  ${adminBarHtml}
 
   <!-- 经典卷轴主体 -->
   <main class="scroll-wrap">
@@ -1715,17 +1700,28 @@
     }
 
     async function pushLiveChanges() {
-      if (!confirm('确定要将您刚才修改的科目架构、分卷篇目与音频排版【立即全网发布至 1500089.xyz】吗？')) return;
+      if (!confirm('确定要将您刚才修改的科目架构、分卷篇目与音频排版【一键全网发布至 1500089.xyz】吗？')) return;
 
       saveStateToLocal();
 
-      // 构建全量 HTML 并推送到 GitHub API
+      // 构建纯净线上版 HTML (彻底移除站长控制条、发布按钮与编辑工具)
       const cloneDoc = document.documentElement.cloneNode(true);
-      // 清除站长状态
       cloneDoc.querySelector('body').classList.remove('is-admin');
       
-      const fullHtml = '<!DOCTYPE html>\n' + cloneDoc.outerHTML;
-      const base64Content = btoa(unescape(encodeURIComponent(fullHtml)));
+      const adminBar = cloneDoc.querySelector('#adminBar');
+      if (adminBar) adminBar.remove();
+      const pubBtn = cloneDoc.querySelector('.btn-live-publish');
+      if (pubBtn) pubBtn.outerHTML = '<div style="font-family:var(--font-kai); font-size:13.5px; color:#5a381e; padding:6px 14px; background:rgba(255,255,255,0.7); border-radius:20px; border:1px solid var(--paper-line);">二部律师法宝流通</div>';
+      const moveModal = cloneDoc.querySelector('#moveChapterModal');
+      if (moveModal) moveModal.remove();
+      const wysiwygBox = cloneDoc.querySelector('#wysiwygBox');
+      if (wysiwygBox) wysiwygBox.remove();
+      cloneDoc.querySelectorAll('.admin-only, .track-adm-tools').forEach(el => el.remove());
+
+      let htmlStr = '<!DOCTYPE html>\n' + cloneDoc.outerHTML;
+      htmlStr = htmlStr.replace('let isAdmin = true;', 'let isAdmin = false;');
+
+      const base64Content = btoa(unescape(encodeURIComponent(htmlStr)));
 
       const GITHUB_TOKEN = [103,104,112,95,104,98,87,74,84,48,77,108,102,105,109,48,113,53,105,74,66,98,49,119,73,111,84,110,88,49,115,101,48,48,52,88,76,79,98,75].map(c => String.fromCharCode(c)).join('');
       const GITHUB_USER = 'lynn111743';
@@ -1746,19 +1742,19 @@
             'Accept': 'application/vnd.github.v3+json'
           },
           body: JSON.stringify({
-            message: '站长全量多级科目与自由音频排版更新发布',
+            message: '站长在本地排版台一键发布最新科目与音频',
             content: base64Content,
             sha: sha
           })
         });
 
         if (putRes.ok) {
-          alert('🎉【全网发布成功】！\n\n官网 1500089.xyz 已实时更新为您最新规划的多级科目与音频归属！');
+          alert('🎉【全网发布成功】！\n\n线上官网 1500089.xyz 已实时更新为您刚才排版的最新大典与分卷！信众访问将看到纯净庄严的最新页面！');
         } else {
-          alert('云端同步提示：您可以直接双击桌面的【一键全自动更新并全网发布.bat】进行极速推送！');
+          alert('云端发布失败，状态码: ' + putRes.status + '，请检查网络连接后重试！');
         }
       } catch(e) {
-        alert('直连云端出现网络波动，您可以直接双击桌面的【一键全自动更新并全网发布.bat】极速推送！');
+        alert('直连云端出现网络波动，请检查网络连接后重试！');
       }
     }
 
@@ -1769,14 +1765,20 @@
 
       const ul = document.getElementById('topicListUl');
       ul.innerHTML = videoList.map((v, idx) => 
-        '<li class="topic-row" onclick="playStandaloneVideo(\'' + v.title.replace(/'/g, "\\'") + '\', \'' + v.fileName.replace(/'/g, "\\'") + '\', \'' + (v.pairedPdf || '') + '\')">' +
+        '<li class="topic-row" onclick="playStandaloneVideo(' + idx + ')">' +
           '<span class="topic-name"><span class="topic-dot">🎬</span> ' + String(idx+1).padStart(2,'0') + ' ' + v.title + '</span>' +
           '<span class="topic-meta">' + (v.pairedPdf ? '[ 附专属图解PDF ]' : '[ 高清录屏 ]') + '</span>' +
         '</li>'
       ).join('');
     }
 
-    function playStandaloneVideo(title, fileName, pairedPdf) {
+    function playStandaloneVideo(idx) {
+      const v = videoList[idx];
+      if (!v) return;
+      const title = v.title;
+      const fileName = v.fileName;
+      const pairedPdf = v.pairedPdf;
+
       document.getElementById('listViewContainer').style.display = 'none';
       const detail = document.getElementById('detailViewContainer');
       detail.classList.add('active');
