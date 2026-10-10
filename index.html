@@ -822,9 +822,18 @@
                   </div>
                   <div class="ap-time-box" id="dpTimeDisplay">00:00 / 00:00</div>
                 </div>
-                <div class="ap-sub-actions">
-                  <button class="ap-btn-pill" onclick="cyclePlaybackRate()" id="dpSpeedBtn">1.0x</button>
-                  <a href="#" target="_blank" class="ap-btn-pill" id="dpDownloadBtn" download>⬇ 下载音频</a>
+                <div class="ap-sub-actions" style="display:flex; justify-content:space-between; align-items:center;">
+                  <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-size:12px; color:var(--text-muted);">线路：</span>
+                    <select id="dpMirrorSelect" class="ap-btn-pill" onchange="changeAudioMirror(this.value)" style="padding:2px 8px; outline:none; font-family:inherit; cursor:pointer;">
+                      <option value="0">⚡ 线路一 (全球CDN加速专线)</option>
+                      <option value="1">🛡️ 线路二 (数字图书馆原版直连)</option>
+                    </select>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:8px;">
+                    <button class="ap-btn-pill" onclick="cyclePlaybackRate()" id="dpSpeedBtn">1.0x</button>
+                    <a href="#" target="_blank" class="ap-btn-pill" id="dpDownloadBtn" download>⬇ 下载音频</a>
+                  </div>
                 </div>
               </div>
 
@@ -944,6 +953,14 @@
     let currentTab = 'audio';
     let isAdmin = false;
     let trackToMoveIdx = -1;
+
+    /* 多镜像高速线路池配置 */
+    const AUDIO_MIRRORS = [
+      { name: '⚡ 线路一 (全球CDN加速专线)', prefix: 'https://audio.1500089.xyz/download/' },
+      { name: '🛡️ 线路二 (数字图书馆原版直连)', prefix: 'https://archive.org/download/' }
+    ];
+    let currentMirrorIdx = 0;
+    let failoverTimer = null;
 
     /* ================= 站长模式切换与鉴权 ================= */
     function toggleAdminMode() {
@@ -1258,9 +1275,42 @@
         if (addEntry) addEntry.style.display = 'block';
       }
 
-      // 载入音频
-      audioEl.src = t.url;
+      loadCurrentAudioTrack(false);
+      renderTrackCards();
+    }
+
+    function getTrackUrlByMirror(track, mIdx) {
+      if (!track) return '';
+      const mirror = AUDIO_MIRRORS[mIdx] || AUDIO_MIRRORS[0];
+      const orig = track.rawUrl || track.url;
+      const cleanPath = orig.indexOf('/download/') !== -1 ? orig.substring(orig.indexOf('/download/') + 10) : orig;
+      return mirror.prefix + cleanPath;
+    }
+
+    function loadCurrentAudioTrack(preserveTime = false) {
+      if (!currentAlbum || !currentAlbum.audios[currentTrackIdx]) return;
+      const t = currentAlbum.audios[currentTrackIdx];
+      const targetUrl = getTrackUrlByMirror(t, currentMirrorIdx);
+      const prevTime = preserveTime ? audioEl.currentTime : 0;
+
+      const downBtn = document.getElementById('dpDownloadBtn');
+      if (downBtn) {
+        downBtn.href = targetUrl;
+        downBtn.setAttribute('download', t.name);
+      }
+
+      audioEl.src = targetUrl;
       audioEl.playbackRate = currentSpeed;
+      if (prevTime > 0) audioEl.currentTime = prevTime;
+
+      clearTimeout(failoverTimer);
+      // 若缓冲超过 4.5 秒仍未起播，静默自动切换下一条镜像
+      failoverTimer = setTimeout(() => {
+        if (audioEl.readyState < 2 && isPlaying) {
+          switchNextMirrorSilently();
+        }
+      }, 4500);
+
       audioEl.play().then(() => {
         isPlaying = true;
         updatePlayBtnUI();
@@ -1268,9 +1318,29 @@
         isPlaying = false;
         updatePlayBtnUI();
       });
-
-      renderTrackCards();
     }
+
+    function changeAudioMirror(val) {
+      currentMirrorIdx = parseInt(val, 10) || 0;
+      loadCurrentAudioTrack(true);
+    }
+
+    function switchNextMirrorSilently() {
+      currentMirrorIdx = (currentMirrorIdx + 1) % AUDIO_MIRRORS.length;
+      const sel = document.getElementById('dpMirrorSelect');
+      if (sel) sel.value = String(currentMirrorIdx);
+      console.log('自动切换至镜像线路:', AUDIO_MIRRORS[currentMirrorIdx].name);
+      loadCurrentAudioTrack(true);
+    }
+
+    audioEl.onerror = () => {
+      clearTimeout(failoverTimer);
+      switchNextMirrorSilently();
+    };
+
+    audioEl.onplaying = () => {
+      clearTimeout(failoverTimer);
+    };
 
     function togglePlayState() {
       if (!audioEl.src) return;
