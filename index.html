@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html lang="zh-CN"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>今当知 ｜ 二部律师法宝音声流通网</title>
+  <title>今当知 ｜ 站长排版与发布总台</title>
   <style>
     :root {
       --scroll-wood: #5a381e;
@@ -709,7 +708,7 @@
     }
   </style>
 </head>
-<body >
+<body class="">
 
   <!-- 顶部水墨意境横幅 -->
   <header class="header-banner">
@@ -722,9 +721,7 @@
         <div class="brand-sub">二部律师宣讲 ｜ 南山律宗正统科判法宝流通阁</div>
       </div>
       <div>
-        <div style="font-family:var(--font-kai); font-size:13.5px; color:#5a381e; padding:6px 14px; background:rgba(255,255,255,0.7); border-radius:20px; border:1px solid var(--paper-line);">
-        二部律师法宝流通
-      </div>
+        <div style="font-family:var(--font-kai); font-size:13.5px; color:#5a381e; padding:6px 14px; background:rgba(255,255,255,0.7); border-radius:20px; border:1px solid var(--paper-line);">二部律师法宝流通</div>
       </div>
     </div>
   </header>
@@ -739,6 +736,7 @@
     </div>
   </nav>
 
+  <!-- 站长后台管理控制条 (本地版直接就绪，无需重复输密码) -->
   
 
   <!-- 经典卷轴主体 -->
@@ -752,9 +750,9 @@
         <div id="sidebarCatMode">
           <div class="sidebar-header-box">
             <span>法宝藏经阁</span>
-            <button class="btn-adm-mini admin-only" onclick="promptAddCategory()" title="新增一级门类">➕ 新增门类</button>
+            
           </div>
-          <ul class="sidebar-tree-list" id="sidebarCategoryList"></ul>
+          <ul class="sidebar-tree-list" id="sidebarCategoryList"><li class="tree-node-cat active" onclick="filterCategory('全部法宝')"><span>全部法宝</span><div style="display:flex; align-items:center; gap:6px;"><span class="tree-badge">23</span></div></li><li class="tree-node-cat " onclick="filterCategory('律藏大典')"><span>律藏大典</span><div style="display:flex; align-items:center; gap:6px;"><span class="tree-badge">6</span></div></li><li class="tree-node-cat " onclick="filterCategory('经部讲录')"><span>经部讲录</span><div style="display:flex; align-items:center; gap:6px;"><span class="tree-badge">5</span></div></li><li class="tree-node-cat " onclick="filterCategory('修持导读')"><span>修持导读</span><div style="display:flex; align-items:center; gap:6px;"><span class="tree-badge">9</span></div></li><li class="tree-node-cat " onclick="filterCategory('专题开示')"><span>专题开示</span><div style="display:flex; align-items:center; gap:6px;"><span class="tree-badge">1</span></div></li><li class="tree-node-cat " onclick="filterCategory('精华剪辑')"><span>精华剪辑</span><div style="display:flex; align-items:center; gap:6px;"><span class="tree-badge">1</span></div></li><li class="tree-node-cat " onclick="filterCategory('学戒答疑')"><span>学戒答疑</span><div style="display:flex; align-items:center; gap:6px;"><span class="tree-badge">1</span></div></li></ul>
         </div>
 
         <!-- 模式 B：大典分卷篇目树 (专页讲堂模式，如进入《行事钞资持记》) -->
@@ -762,7 +760,7 @@
           <a href="javascript:void(0)" onclick="showListView()" class="sidebar-back-link">‹ 返回全部大典清单</a>
           <div class="sidebar-header-box">
             <span id="sidebarAlbumTitle" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:140px;">大典科目</span>
-            <button class="btn-adm-mini admin-only" onclick="promptAddChapter()" title="新增分卷/篇目科目">➕ 新增篇目</button>
+            
           </div>
           <ul class="sidebar-tree-list" id="sidebarChapterList"></ul>
         </div>
@@ -772,19 +770,17 @@
       <section class="content-right">
         
         <div class="content-head-bar">
-          <span class="content-main-title" id="contentHeadTitle">法宝下载（音频）</span>
-          <div class="breadcrumbs" id="breadcrumbsBox">
-            您现在的位置：<a href="javascript:void(0)" onclick="showListView()">首页</a> &gt; <span id="breadCat">全部大典</span> &gt; <span id="breadItem">全部</span>
-          </div>
+          <span class="content-main-title" id="contentHeadTitle">法宝下载（音频大典）</span>
+          <div class="breadcrumbs" id="breadcrumbsBox">您现在的位置：<a href="javascript:void(0)" onclick="showListView()">首页</a> &gt; <span>音频大典</span> &gt; <strong style="color:var(--cinnabar-red);">全部法宝</strong></div>
         </div>
 
         <!-- 列表视图：对标截图1 (整齐点阵清单) -->
         <div id="listViewContainer">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
             <span style="font-size:13px; color:#888;">点击任意大典进入专属讲堂聆听与排版</span>
-            <button class="btn-adm-mini admin-only" style="background:#27ae60; color:#fff;" onclick="promptAddNewAlbum()">➕ 新增大典专栏</button>
+            
           </div>
-          <ul class="topic-list" id="topicListUl"></ul>
+          <ul class="topic-list" id="topicListUl"><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('行事钞资持记')"><span class="topic-dot">·</span> 01 行事钞资持记</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 358 讲 ｜ 17 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('羯磨疏济缘记')"><span class="topic-dot">·</span> 02 羯磨疏济缘记</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 64 讲 ｜ 4 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('随机羯磨（全）')"><span class="topic-dot">·</span> 03 随机羯磨（全）</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 23 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('行事钞资持记 受戒缘集篇第八（小众可听剪辑版）')"><span class="topic-dot">·</span> 04 行事钞资持记 受戒缘集篇第八（小众可听剪辑版）</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 23 讲 ｜ 2 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('大正律藏')"><span class="topic-dot">·</span> 05 大正律藏</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 107 讲 ｜ 30 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('比丘尼戒（全）')"><span class="topic-dot">·</span> 06 比丘尼戒（全）</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 108 讲 ｜ 11 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('佛说优婆塞五戒相经（全）')"><span class="topic-dot">·</span> 07 佛说优婆塞五戒相经（全）</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 5 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('佛说因缘僧护经（全）')"><span class="topic-dot">·</span> 08 佛说因缘僧护经（全）</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 6 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('佛说杂藏经（全）')"><span class="topic-dot">·</span> 09 佛说杂藏经（全）</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 3 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('卢至长者因缘经（全）')"><span class="topic-dot">·</span> 10 卢至长者因缘经（全）</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 2 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('饿鬼报应经（全）')"><span class="topic-dot">·</span> 11 饿鬼报应经（全）</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 3 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('三归、五戒、八戒')"><span class="topic-dot">·</span> 12 三归、五戒、八戒</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 5 讲 ｜ 2 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('学佛行仪（全）')"><span class="topic-dot">·</span> 13 学佛行仪（全）</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 11 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('五分律精华导读')"><span class="topic-dot">·</span> 14 五分律精华导读</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 21 讲 ｜ 21 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('僧祇律精华导读')"><span class="topic-dot">·</span> 15 僧祇律精华导读</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 2 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('式叉尼沙弥尼法')"><span class="topic-dot">·</span> 16 式叉尼沙弥尼法</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 2 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('污家之患')"><span class="topic-dot">·</span> 17 污家之患</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 3 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('请宾头卢法（全）')"><span class="topic-dot">·</span> 18 请宾头卢法（全）</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 1 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('缁门崇行录')"><span class="topic-dot">·</span> 19 缁门崇行录</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 2 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('一梦漫言（全）')"><span class="topic-dot">·</span> 20 一梦漫言（全）</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 27 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('专题开示')"><span class="topic-dot">·</span> 21 专题开示</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 273 讲 ｜ 1 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('精华剪辑')"><span class="topic-dot">·</span> 22 精华剪辑</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 956 讲 ｜ 2 个篇目 ]</span></div></li><li class="topic-row"><span class="topic-name" onclick="openAlbumDetail('问答合集')"><span class="topic-dot">·</span> 23 问答合集</span><div style="display:flex; align-items:center; gap:8px;"><span class="topic-meta">[ 共 1 讲 ｜ 1 个篇目 ]</span></div></li></ul>
         </div>
 
         <!-- 详情视图：对标截图2 (专页讲堂 + 左右双拼) -->
@@ -792,9 +788,9 @@
           <div class="album-head-center">
             <div style="display:flex; justify-content:center; align-items:center; gap:10px;">
               <h2 class="album-page-title" id="dpAlbumTitle">行事钞资持记</h2>
-              <button class="btn-adm-mini admin-only" onclick="renameCurrentAlbum()">✏️ 重命名大典</button>
-              <button class="btn-adm-mini admin-only" onclick="changeCurrentAlbumCategory()">🔀 转移门类</button>
-              <button class="btn-adm-mini admin-only" onclick="deleteCurrentAlbum()">🗑️ 删除此大典</button>
+              
+              
+              
             </div>
             <div class="album-page-meta" id="dpAlbumMeta">分类：【律藏大典】 ｜ 当前科目：【全部】 ｜ 二部律师 ｜ 清净流通</div>
             <div id="dpMasterPdfWrap"></div>
@@ -806,14 +802,14 @@
             <div class="left-play-hall">
               <!-- 视频大屏 -->
               <div class="video-screen-box" id="dpVideoBox">
-                <video id="dpVideoEl" controls preload="metadata"></video>
+                <video id="dpVideoEl" controls="" preload="metadata"></video>
               </div>
 
               <!-- 音频播放条 -->
               <div class="audio-player-box" id="dpAudioBox">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                   <div class="ap-track-title" id="dpTrackTitle">正在准备法音...</div>
-                  <button class="btn-adm-mini admin-only" onclick="renameCurrentTrack()">✏️ 改讲次名称</button>
+                  
                 </div>
                 <div class="ap-controls-row">
                   <button class="ap-play-btn" id="dpPlayBtn" onclick="togglePlayState()">▶</button>
@@ -825,19 +821,11 @@
                 <div class="ap-sub-actions" style="display:flex; justify-content:space-between; align-items:center;">
                   <div style="display:flex; align-items:center; gap:6px;">
                     <span style="font-size:12px; color:var(--text-muted);">线路：</span>
-                    <select id="dpMirrorSelect" class="ap-btn-pill" onchange="changeAudioMirror(this.value)" style="padding:2px 8px; outline:none; font-family:inherit; cursor:pointer;">
-                      <option value="0">⚡ 线路一 (全球CDN智能加速)</option>
-                      <option value="1">🚀 线路二 (全球CDN标准缓存)</option>
-                      <option value="2">🛡️ 线路三 (数字图书馆原版主干)</option>
-                      <option value="3">🌐 线路四 (数字图书馆CORS直通)</option>
-                      <option value="4">🛰️ 线路五 (亚太及全球边缘分发)</option>
-                      <option value="5">📡 线路六 (分布式存储智能通道)</option>
-                      <option value="6">🔒 线路七 (核心容灾极速冗余线)</option>
-                    </select>
+                    <select id="dpMirrorSelect" class="ap-btn-pill" onchange="changeAudioMirror(this.value)" style="padding:2px 8px; outline:none; font-family:inherit; cursor:pointer;"><option value="0">⚡ 线路一 (全球CDN智能加速)</option><option value="1">🚀 线路二 (全球CDN标准缓存)</option><option value="2">🛡️ 线路三 (数字图书馆原版主干)</option><option value="3">🌐 线路四 (数字图书馆CORS直通)</option><option value="4">🛰️ 线路五 (亚太及全球边缘分发)</option><option value="5">📡 线路六 (分布式存储智能通道)</option><option value="6">🔒 线路七 (核心容灾极速冗余线)</option></select>
                   </div>
                   <div style="display:flex; align-items:center; gap:8px;">
                     <button class="ap-btn-pill" onclick="cyclePlaybackRate()" id="dpSpeedBtn">1.0x</button>
-                    <a href="#" target="_blank" class="ap-btn-pill" id="dpDownloadBtn" download>⬇ 下载音频</a>
+                    <a href="#" target="_blank" class="ap-btn-pill" id="dpDownloadBtn" download="">⬇ 下载音频</a>
                   </div>
                 </div>
               </div>
@@ -848,7 +836,7 @@
                   <span>📜 本讲法义讲义与图解</span>
                   <div style="display:flex; align-items:center; gap:8px;">
                     <span id="dpPairedPdfBadge"></span>
-                    <button class="btn-adm-mini admin-only" onclick="toggleWysiwygEdit()">✏️ 编辑讲义配图</button>
+                    
                   </div>
                 </div>
                 <div class="lecture-body-content" id="dpLectureBody"></div>
@@ -856,27 +844,15 @@
               </div>
 
               <!-- 站长添加讲义入口 (仅在站长模式下提供，信众完全隐藏) -->
-              <div id="dpAddLectureEntry" class="admin-only" style="margin-top:10px; display:none;">
-                <button class="btn-adm-mini" style="background:#5a381e; color:#fff; padding:5px 12px; border-radius:3px;" onclick="toggleWysiwygEdit()">➕ 为本讲添加文字讲义或插入图片</button>
-              </div>
+              
 
               <!-- 站长所见即所得图文编辑画布 -->
-              <div id="wysiwygBox" style="display:none; margin-top:12px; padding:10px; background:#fff; border:1px solid #d4c4a8; border-radius:4px;">
-                <div style="margin-bottom:6px; font-weight:bold; color:var(--scroll-wood); font-size:13px;">✏️ 所见即所得编辑画布：</div>
-                <div id="wysiwygCanvas" contenteditable="true" style="min-height:120px; max-height:300px; overflow-y:auto; border:1px dashed #d4c4a8; padding:8px; outline:none;"></div>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-                  <button class="btn-adm-mini" style="background:#8e44ad; color:#fff;" onclick="promptInsertImage()">🖼️ 插入本地真图</button>
-                  <div style="display:flex; gap:8px;">
-                    <button class="btn-adm-mini" style="background:#27ae60; color:#fff;" onclick="saveWysiwygLecture()">💾 保存讲义</button>
-                    <button class="btn-adm-mini" style="background:#7f8c8d; color:#fff;" onclick="cancelWysiwygEdit()">✕ 取消</button>
-                  </div>
-                </div>
-              </div>
+              
             </div>
 
             <!-- 右侧：讲次卡片列表 (支持追加、转移科目、排序、删除) -->
             <div>
-              <button class="btn-adm-mini admin-only" style="width:100%; margin-bottom:8px; padding:8px; background:var(--scroll-wood); color:#fff; font-weight:bold;" onclick="promptAddTrack()">➕ 追加新音频讲次</button>
+              
               <div class="right-track-cards" id="dpTrackList"></div>
             </div>
           </div>
@@ -888,23 +864,7 @@
   </main>
 
   <!-- 模态框：转移音频所属科目 (解决“音频随我怎么放”) -->
-  <div class="modal-overlay" id="moveChapterModal">
-    <div class="modal-box">
-      <div class="modal-title">📂 移动音频所属科目</div>
-      <div class="modal-body">
-        <div>当前讲次：<strong id="moveModalTrackName">--</strong></div>
-        <div style="margin-top:6px; color:#666; font-size:12px;">当前所属：<span id="moveModalCurChapter">--</span></div>
-        <label for="moveChapterSelect">选择移至的现有科目：</label>
-        <select id="moveChapterSelect" class="modal-select"></select>
-        <label for="moveChapterNewInput">或创建并移至新科目：</label>
-        <input type="text" id="moveChapterNewInput" class="modal-input" placeholder="输入新分卷/篇目名称（留空则使用上方选定科目）">
-      </div>
-      <div class="modal-actions">
-        <button class="btn-adm-mini" style="background:#7f8c8d; color:#fff; padding:6px 14px;" onclick="closeMoveChapterModal()">取消</button>
-        <button class="btn-adm-mini" style="background:#27ae60; color:#fff; padding:6px 14px; font-weight:bold;" onclick="confirmMoveChapter()">确定移动</button>
-      </div>
-    </div>
-  </div>
+  
 
   <audio id="globalAudioEl" preload="metadata"></audio>
 
@@ -1959,5 +1919,5 @@
       renderTopicList();
     });
   </script>
-</body>
-</html>
+
+</body></html>
