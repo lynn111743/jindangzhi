@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${workbenchTitle}</title>
+  <title>今当知 ｜ 二部律师法宝音声流通网</title>
   <style>
     :root {
       --scroll-wood: #5a381e;
@@ -709,7 +709,7 @@
     }
   </style>
 </head>
-<body ${bodyClass}>
+<body >
 
   <!-- 顶部水墨意境横幅 -->
   <header class="header-banner">
@@ -722,7 +722,9 @@
         <div class="brand-sub">二部律师宣讲 ｜ 南山律宗正统科判法宝流通阁</div>
       </div>
       <div>
-        ${headerRightHtml}
+        <div style="font-family:var(--font-kai); font-size:13.5px; color:#5a381e; padding:6px 14px; background:rgba(255,255,255,0.7); border-radius:20px; border:1px solid var(--paper-line);">
+        二部律师法宝流通
+      </div>
       </div>
     </div>
   </header>
@@ -737,7 +739,7 @@
     </div>
   </nav>
 
-  ${adminBarHtml}
+  
 
   <!-- 经典卷轴主体 -->
   <main class="scroll-wrap">
@@ -826,8 +828,8 @@
                 </div>
               </div>
 
-              <!-- 宣纸讲义与配图展厅 -->
-              <div class="lecture-paper-box">
+              <!-- 宣纸讲义与配图展厅 (仅当本讲确实有文字讲义或配图时才展示，无内容时彻底隐藏) -->
+              <div class="lecture-paper-box" id="dpLectureBox" style="display:none;">
                 <div class="lecture-paper-title">
                   <span>📜 本讲法义讲义与图解</span>
                   <div style="display:flex; align-items:center; gap:8px;">
@@ -835,19 +837,24 @@
                     <button class="btn-adm-mini admin-only" onclick="toggleWysiwygEdit()">✏️ 编辑讲义配图</button>
                   </div>
                 </div>
-                <div class="lecture-body-content" id="dpLectureBody">暂无文字讲义</div>
+                <div class="lecture-body-content" id="dpLectureBody"></div>
                 <div class="lecture-paired-imgs" id="dpPairedImgsWrap"></div>
+              </div>
 
-                <!-- 站长所见即所得图文编辑画布 -->
-                <div id="wysiwygBox" style="display:none; margin-top:12px; padding:10px; background:#fff; border:1px solid #d4c4a8; border-radius:4px;">
-                  <div style="margin-bottom:6px; font-weight:bold; color:var(--scroll-wood); font-size:13px;">✏️ 所见即所得编辑画布：</div>
-                  <div id="wysiwygCanvas" contenteditable="true" style="min-height:120px; max-height:300px; overflow-y:auto; border:1px dashed #d4c4a8; padding:8px; outline:none;"></div>
-                  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
-                    <button class="btn-adm-mini" style="background:#8e44ad; color:#fff;" onclick="promptInsertImage()">🖼️ 插入本地真图</button>
-                    <div style="display:flex; gap:8px;">
-                      <button class="btn-adm-mini" style="background:#27ae60; color:#fff;" onclick="saveWysiwygLecture()">💾 保存讲义</button>
-                      <button class="btn-adm-mini" style="background:#7f8c8d; color:#fff;" onclick="cancelWysiwygEdit()">✕ 取消</button>
-                    </div>
+              <!-- 站长添加讲义入口 (仅在站长模式下提供，信众完全隐藏) -->
+              <div id="dpAddLectureEntry" class="admin-only" style="margin-top:10px; display:none;">
+                <button class="btn-adm-mini" style="background:#5a381e; color:#fff; padding:5px 12px; border-radius:3px;" onclick="toggleWysiwygEdit()">➕ 为本讲添加文字讲义或插入图片</button>
+              </div>
+
+              <!-- 站长所见即所得图文编辑画布 -->
+              <div id="wysiwygBox" style="display:none; margin-top:12px; padding:10px; background:#fff; border:1px solid #d4c4a8; border-radius:4px;">
+                <div style="margin-bottom:6px; font-weight:bold; color:var(--scroll-wood); font-size:13px;">✏️ 所见即所得编辑画布：</div>
+                <div id="wysiwygCanvas" contenteditable="true" style="min-height:120px; max-height:300px; overflow-y:auto; border:1px dashed #d4c4a8; padding:8px; outline:none;"></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+                  <button class="btn-adm-mini" style="background:#8e44ad; color:#fff;" onclick="promptInsertImage()">🖼️ 插入本地真图</button>
+                  <div style="display:flex; gap:8px;">
+                    <button class="btn-adm-mini" style="background:#27ae60; color:#fff;" onclick="saveWysiwygLecture()">💾 保存讲义</button>
+                    <button class="btn-adm-mini" style="background:#7f8c8d; color:#fff;" onclick="cancelWysiwygEdit()">✕ 取消</button>
                   </div>
                 </div>
               </div>
@@ -1217,26 +1224,38 @@
       downBtn.href = t.url;
       downBtn.setAttribute('download', t.name);
 
-      // 讲义展示
+      // 讲义展示与配图逻辑：只有真正有内容时才展示，无内容时彻底隐藏（绝不显示空占位字样）
+      const lectureBox = document.getElementById('dpLectureBox');
+      const addEntry = document.getElementById('dpAddLectureEntry');
       const body = document.getElementById('dpLectureBody');
-      body.innerText = t.text ? t.text : '暂无文字讲义（站长登录后可点击下方【✏️ 编辑讲义配图】自由打字与插图）';
-
-      // 配套图解 PDF
       const pdfBadge = document.getElementById('dpPairedPdfBadge');
-      if (t.pairedPdf) {
-        pdfBadge.innerHTML = '<a href="https://audio.1500089.xyz/download/jindangzhi_zhuanti_yuanban_2026/' + encodeURIComponent(t.pairedPdf) + '" target="_blank" class="ap-btn-pill">📄 专属图解 (' + t.pairedPdf + ')</a>';
-      } else {
-        pdfBadge.innerHTML = '';
-      }
-
-      // 配套真实图片展厅
       const imgWrap = document.getElementById('dpPairedImgsWrap');
-      if (t.pairedImgs && t.pairedImgs.length > 0) {
-        imgWrap.innerHTML = t.pairedImgs.map(img => 
-          '<img src="https://audio.1500089.xyz/download/' + currentAlbum.id + '/' + encodeURIComponent(img) + '" class="paired-img-thumb" onclick="window.open(this.src)" title="点击放大法相">'
-        ).join('');
+
+      const hasText = !!(t.text && t.text.trim());
+      const hasImgs = !!(t.pairedImgs && t.pairedImgs.length > 0);
+      const hasPdf = !!t.pairedPdf;
+
+      if (hasText || hasImgs || hasPdf) {
+        if (lectureBox) lectureBox.style.display = 'block';
+        if (body) {
+          body.innerText = hasText ? t.text : '';
+          body.style.display = hasText ? 'block' : 'none';
+        }
+        if (pdfBadge) {
+          pdfBadge.innerHTML = hasPdf ? '<a href="https://audio.1500089.xyz/download/jindangzhi_zhuanti_yuanban_2026/' + encodeURIComponent(t.pairedPdf) + '" target="_blank" class="ap-btn-pill">📄 专属图解 (' + t.pairedPdf + ')</a>' : '';
+        }
+        if (imgWrap) {
+          imgWrap.innerHTML = hasImgs ? t.pairedImgs.map(img => 
+            '<img src="https://audio.1500089.xyz/download/' + currentAlbum.id + '/' + encodeURIComponent(img) + '" class="paired-img-thumb" onclick="window.open(this.src)" title="点击放大法相">'
+          ).join('') : '';
+        }
+        if (addEntry) addEntry.style.display = 'none';
       } else {
-        imgWrap.innerHTML = '';
+        if (lectureBox) lectureBox.style.display = 'none';
+        if (body) body.innerText = '';
+        if (imgWrap) imgWrap.innerHTML = '';
+        if (pdfBadge) pdfBadge.innerHTML = '';
+        if (addEntry) addEntry.style.display = 'block';
       }
 
       // 载入音频
@@ -1656,6 +1675,7 @@
       document.getElementById('dpLectureBody').innerText = canvas.innerText;
       document.getElementById('wysiwygBox').style.display = 'none';
       saveStateToLocal();
+      selectTrack(currentTrackIdx);
       alert('✔ 本讲义文字与配图已妥善保存！');
     }
 
